@@ -13,6 +13,7 @@ export interface IndexPresenterProps {
 	}
 	estimate: {
 		visible: boolean
+		isLoading: boolean
 		onStartEstimate: IndexEstimateProps['onStartEstimate']
 		insuranceList?: InsuranceLitsResponse
 	}
