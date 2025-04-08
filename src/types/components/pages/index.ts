@@ -23,6 +23,7 @@ export interface IndexEstimateProps {
 	handleChangeEstimates: BasicCheckboxProps['onChange']
 	onStartEstimate: () => void
 	insuranceList?: InsuranceLitsResponse
+	isLoading: boolean
 }
 
 export interface EstimateBlockProps {

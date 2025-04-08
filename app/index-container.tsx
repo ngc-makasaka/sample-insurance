@@ -11,7 +11,7 @@ import { BasicDatePickerProps } from '@/src/types/components/forms/basic-datepic
 import { PersonalStoreState } from '@/src/types/stores/personal'
 
 export default function IndexContainer() {
-	const { data, setQuery } = useInsuranceList()
+	const { data, isLoading, setQuery } = useInsuranceList()
 	const { form, handleChangeSex, handleChangeBirthday, handleChangeEstimates } =
 		useForm()
 	const { visible, setVisible, onStartEstimate } = useEstimate()
@@ -91,7 +91,7 @@ export default function IndexContainer() {
 				handleChangeBirthday,
 				handleChangeEstimates,
 			}}
-			estimate={{ visible, onStartEstimate, insuranceList: data }}
+			estimate={{ visible, isLoading, onStartEstimate, insuranceList: data }}
 		/>
 	)
 }

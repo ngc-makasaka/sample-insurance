@@ -31,7 +31,7 @@ export default function IndexEstimate(props: IndexEstimateProps) {
 			<CommonButton
 				label="保険料見積もりスタート"
 				size="large"
-				disabled={!props.selectedEstimates.length}
+				disabled={props.isLoading || !props.selectedEstimates.length}
 				onClick={props.onStartEstimate}
 			/>
 		</section>

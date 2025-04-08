@@ -14,6 +14,7 @@ export default function IndexPresenter(props: IndexPresenterProps) {
 			<IndexForm {...props.formState} />
 			{props.estimate.visible && (
 				<IndexEstimate
+					isLoading={props.estimate.isLoading}
 					insuranceList={props.estimate.insuranceList}
 					handleChangeEstimates={props.formState.handleChangeEstimates}
 					selectedEstimates={props.formState.form.selectedEstimates}
