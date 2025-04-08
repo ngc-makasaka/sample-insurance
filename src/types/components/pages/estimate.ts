@@ -5,6 +5,7 @@ import {
 	InsuranceResultResponse,
 } from '@/src/types/api/insurance'
 import { BasicCheckboxProps } from '@/src/types/components/forms/basic-checkbox'
+import { PersonalStoreState } from '@/src/types/stores/personal'
 
 export interface EstimatePresenterProps {
 	personal: EstimatePersonalProps
@@ -14,9 +15,8 @@ export interface EstimatePresenterProps {
 }
 
 export interface EstimatePersonalProps {
-	birthday: string
-	age: number
-	sex: string
+	birthday: PersonalStoreState['birthday']
+	sex: PersonalStoreState['sex']
 }
 
 export interface EstimateInsuranceProps {
@@ -31,13 +31,16 @@ export interface EstimateInsuranceUnitProps extends InsuranceResultResponse {
 	onChange: BasicCheckboxProps['onChange']
 	name: BasicCheckboxProps['name']
 	id: BasicCheckboxProps['id']
-	selectedInsurance: number[]
-	handleChangeInsurance: (
-		event: ChangeEvent<HTMLInputElement>,
-		checked: boolean
-	) => void
+	selectedInsurance: string[]
+	handleChangeInsurance: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export interface EstimateInsurancePriceProps {
 	price: number
+}
+
+export interface EstimateSelectedProps {
+	selectedInsurance: EstimateInsuranceUnitProps['selectedInsurance']
+	insurance?: InsuranceLitsResponse
+	handleChangeInsurance: (event: ChangeEvent<HTMLInputElement>) => void
 }

@@ -2,7 +2,7 @@ import { BaseListResponse, BaseResponse } from '@/src/types/api/base'
 
 export type InsuranceListQuery = {
 	birthday?: string
-	sex?: string
+	sex?: 'male' | 'female'
 }
 
 export type InsuranceLitsResponse = BaseListResponse<InsuranceResultResponse>

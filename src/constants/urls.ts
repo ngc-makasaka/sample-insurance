@@ -5,6 +5,7 @@ export const URLS = {
 		list: '/samples',
 		detail: (id: BaseResponse['id']) => `/samples/${id}`,
 	},
+	home: '/',
 	estimate: {
 		estimate: '/estimate',
 	},

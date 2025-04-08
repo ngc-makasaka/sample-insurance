@@ -1,6 +1,6 @@
-import { Form } from '@/src/types/components/pages'
+import { PersonalStoreState } from '@/src/types/stores/personal'
 
 export interface SexRadioProps {
-	value: Form['sex']
+	value: PersonalStoreState['sex']
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }

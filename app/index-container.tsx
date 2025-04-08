@@ -1,11 +1,12 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import IndexPresenter from '@/app/index-presenter'
 import { URLS } from '@/src/constants/urls'
 import { useInsuranceList } from '@/src/hooks/api/insurance'
+import { usePersonalStore } from '@/src/stores/personal'
 import { BasicDatePickerProps } from '@/src/types/components/forms/basic-datepicker'
 import { Form } from '@/src/types/components/pages'
 
@@ -16,11 +17,15 @@ export default function IndexContainer() {
 	const { visible, setVisible, onStartEstimate } = useEstimate()
 
 	function useForm() {
-		const [form, _setForm] = useState<Form>({
-			birthday: null,
-			sex: null,
-			selectedEstimates: [],
-		})
+		const store = usePersonalStore()
+		const form = useMemo(
+			() => ({
+				birthday: store.birthday,
+				sex: store.sex,
+				selectedEstimates: store.selectedEstimates,
+			}),
+			[store.birthday, store.sex, store.selectedEstimates]
+		)
 
 		useEffect(() => {
 			if (!form.birthday || !form.sex) return
@@ -32,12 +37,13 @@ export default function IndexContainer() {
 		}, [form])
 
 		const handleChangeSex = (event: React.ChangeEvent<HTMLInputElement>) => {
-			_setForm({ ...form, sex: event.target.value as Form['sex'] })
+			if (!event.target.value) return
+			store.setSex(event.target.value as Form['sex'])
 		}
 
 		const handleChangeBirthday = (value: BasicDatePickerProps['value']) => {
 			if (!value) return
-			_setForm({ ...form, birthday: value.format('YYYY-MM-DD') })
+			store.setBirthday(value.format('YYYY-MM-DD'))
 		}
 
 		const handleChangeEstimates = (
@@ -50,10 +56,7 @@ export default function IndexContainer() {
 						(estimate) => estimate !== event.target.value
 					)
 				: [...form.selectedEstimates, event.target.value]
-			_setForm({
-				...form,
-				selectedEstimates,
-			})
+			store.setSelectedEstimates(selectedEstimates)
 		}
 
 		return {

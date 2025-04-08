@@ -21,7 +21,11 @@ export default function EstimatePresenter(props: EstimatePresenterProps) {
 					/>
 				</div>
 				<div className={styles['estimate-section__selected']}>
-					<EstimateSelected />
+					<EstimateSelected
+						insurance={props.insurance}
+						selectedInsurance={props.selectedInsurance}
+						handleChangeInsurance={props.handleChangeInsurance}
+					/>
 				</div>
 			</section>
 		</article>

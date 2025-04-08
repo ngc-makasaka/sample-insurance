@@ -1,36 +1,43 @@
 'use client'
 
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useMemo } from 'react'
 
 import EstimatePresenter from '@/app/estimate/estimate-presenter'
 import { useInsuranceList } from '@/src/hooks/api/insurance'
+import { usePersonalStore } from '@/src/stores/personal'
 
 export default function EstimateContainer() {
 	const { data, setQuery } = useInsuranceList()
-	const { selectedInsurance, handleChangeInsurance } = useInsurance()
+	const { handleChangeInsurance, personal } = useInsurance()
 
 	function useInsurance() {
-		const [selectedInsurance, _setSelectedInsurance] = useState<number[]>([
-			1, 2, 3, 4,
-		])
+		const store = usePersonalStore()
+		const personal = useMemo(
+			() => ({
+				birthday: store.birthday,
+				sex: store.sex,
+				selectedEstimates: store.selectedEstimates,
+			}),
+			[store.birthday, store.sex, store.selectedEstimates]
+		)
 
 		useEffect(() => {
 			setQuery({
-				birthday: '1990-01-01',
-				sex: 'male',
+				birthday: personal.birthday!,
+				sex: personal.sex!,
 			})
-		}, [])
+		}, [personal.birthday, personal.sex])
 
 		const handleChangeInsurance = (event: ChangeEvent<HTMLInputElement>) => {
 			const id = Number(event.target.value)
-			const insurance = selectedInsurance.includes(id)
-				? selectedInsurance.filter((item) => item !== id)
-				: [...selectedInsurance, id]
-			_setSelectedInsurance(insurance)
+			const insurance = personal.selectedEstimates.includes(id.toString())
+				? personal.selectedEstimates.filter((item) => item !== id.toString())
+				: [...personal.selectedEstimates, id.toString()]
+			store.setSelectedEstimates(insurance)
 		}
 
 		return {
-			selectedInsurance,
+			personal,
 			handleChangeInsurance,
 		}
 	}
@@ -38,12 +45,11 @@ export default function EstimateContainer() {
 	return (
 		<EstimatePresenter
 			personal={{
-				birthday: '1990-01-01',
-				age: 30,
-				sex: 'male',
+				birthday: personal.birthday!,
+				sex: personal.sex!,
 			}}
 			insurance={data}
-			selectedInsurance={selectedInsurance}
+			selectedInsurance={personal.selectedEstimates}
 			handleChangeInsurance={handleChangeInsurance}
 		/>
 	)

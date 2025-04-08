@@ -18,7 +18,7 @@ const EstimateInsuranceUnit = (props: EstimateInsuranceUnitProps) => {
 							value={props.value}
 							onChange={props.onChange}
 							name={props.name}
-							checked={props.selectedInsurance.includes(Number(props.id))}
+							checked={props.selectedInsurance.includes(props.id.toString())}
 						/>
 						<h3>{props.title}</h3>
 					</div>
