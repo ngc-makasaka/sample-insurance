@@ -4,9 +4,6 @@ import { insuranceListMock } from '@/src/mocks/insurance'
 
 export async function GET(request: NextRequest) {
 	console.log(request)
-	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(NextResponse.json(insuranceListMock))
-		}, 3000)
-	})
+	await new Promise((resolve) => setTimeout(resolve, 3000))
+	return NextResponse.json(insuranceListMock)
 }
