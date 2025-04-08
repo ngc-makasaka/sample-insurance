@@ -1,0 +1,15 @@
+{
+	"semi": false,
+	"singleQuote": true,
+	"tabWidth": 2,
+	"trailingComma": "es5",
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"parser": "markdown",
+				"proseWrap": "preserve"
+			}
+		}
+	]
+}

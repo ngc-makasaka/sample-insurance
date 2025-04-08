@@ -1,0 +1,29 @@
+.wrapper {
+	align-items: center;
+	border: 1px solid #000;
+	border-radius: 10px;
+	display: flex;
+	font-size: 14px;
+	justify-content: space-between;
+	padding: 3px 20px;
+
+	.personal {
+		display: flex;
+		gap: 10px;
+
+		.personal-item {
+			display: flex;
+			gap: 5px;
+		}
+
+		.label {
+			font-weight: 600;
+
+			&::after {
+				content: ':';
+				font-weight: 400;
+				margin-left: 5px;
+			}
+		}
+	}
+}

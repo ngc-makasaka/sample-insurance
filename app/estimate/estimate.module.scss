@@ -1,0 +1,36 @@
+.estimate {
+	&-wrapper {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		margin: 80px auto 120px;
+		width: 100%;
+	}
+
+	&-title {
+		font-size: 24px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+	&-section {
+		display: flex;
+		gap: 20px;
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			position: relative;
+			width: 680px;
+		}
+
+		&__selected {
+			height: fit-content;
+			padding-top: 10px;
+			position: sticky;
+			right: 0;
+			top: 0;
+		}
+	}
+}

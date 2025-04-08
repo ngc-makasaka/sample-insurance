@@ -1,0 +1,10 @@
+# EditorConfig https://editorconfig.org/
+# setting https://qiita.com/naru0504/items/82f09881abaf3f4dc171
+
+root = true
+
+[*]
+indent_style = tab
+indent_size = 2
+end_of_line = lf
+charset = utf-8
