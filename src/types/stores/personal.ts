@@ -1,6 +1,8 @@
+import { SexType } from '@/src/constants/enum'
+
 export interface PersonalStoreState {
 	birthday: string | null
-	sex: 'male' | 'female' | null
+	sex: SexType | null
 	selectedEstimates: string[]
 }
 

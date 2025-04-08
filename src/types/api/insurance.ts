@@ -1,8 +1,9 @@
+import { SexType } from '@/src/constants/enum'
 import { BaseListResponse, BaseResponse } from '@/src/types/api/base'
 
 export type InsuranceListQuery = {
 	birthday?: string
-	sex?: 'male' | 'female'
+	sex?: SexType
 }
 
 export type InsuranceLitsResponse = BaseListResponse<InsuranceResultResponse>

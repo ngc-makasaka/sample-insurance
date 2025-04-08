@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 
 import CommonButton from '@/src/components/common/button'
 import { FORMAT } from '@/src/constants/config'
+import { SexType } from '@/src/constants/enum'
 import { URLS } from '@/src/constants/urls'
 import { EstimatePersonalProps } from '@/src/types/components/pages/estimate'
 
@@ -20,7 +21,7 @@ export default function EstimatePersonal(props: EstimatePersonalProps) {
 	}, [props.birthday])
 
 	const sex = useMemo(() => {
-		return props.sex === 'male' ? '男性' : '女性'
+		return props.sex === SexType.MALE ? '男性' : '女性'
 	}, [props.sex])
 
 	const toIndex = () => {
