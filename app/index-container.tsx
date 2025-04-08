@@ -8,7 +8,7 @@ import { URLS } from '@/src/constants/urls'
 import { useInsuranceList } from '@/src/hooks/api/insurance'
 import { usePersonalStore } from '@/src/stores/personal'
 import { BasicDatePickerProps } from '@/src/types/components/forms/basic-datepicker'
-import { Form } from '@/src/types/components/pages'
+import { PersonalStoreState } from '@/src/types/stores/personal'
 
 export default function IndexContainer() {
 	const { data, setQuery } = useInsuranceList()
@@ -38,7 +38,7 @@ export default function IndexContainer() {
 
 		const handleChangeSex = (event: React.ChangeEvent<HTMLInputElement>) => {
 			if (!event.target.value) return
-			store.setSex(event.target.value as Form['sex'])
+			store.setSex(event.target.value as PersonalStoreState['sex'])
 		}
 
 		const handleChangeBirthday = (value: BasicDatePickerProps['value']) => {
