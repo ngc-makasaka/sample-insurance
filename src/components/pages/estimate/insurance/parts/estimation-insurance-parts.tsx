@@ -22,7 +22,13 @@ const EstimateInsuranceUnit = (props: EstimateInsuranceUnitProps) => {
 						/>
 						<h3>{props.title}</h3>
 					</div>
-					<CommonButton label="商品特徴・メリット" variant="outlined" />
+					<CommonButton
+						label="商品特徴・メリット"
+						variant="outlined"
+						onClick={() =>
+							props.drawer.insuranceDescription.toggle(props.id.toString())
+						}
+					/>
 				</div>
 				<div className={styles['unit-content']}>
 					<p className={styles['unit-content__description']}>
@@ -30,7 +36,13 @@ const EstimateInsuranceUnit = (props: EstimateInsuranceUnitProps) => {
 					</p>
 					<EstimateInsurancePrice price={props.price} />
 					<slot />
-					<CommonButton label="見積もりを編集する" variant="outlined" />
+					<CommonButton
+						label="見積もりを編集する"
+						variant="outlined"
+						onClick={() =>
+							props.drawer.editEstimate.toggle(props.id.toString())
+						}
+					/>
 				</div>
 			</label>
 		</section>

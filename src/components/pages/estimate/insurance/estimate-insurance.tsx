@@ -20,6 +20,7 @@ export default function EstimateInsurance(props: EstimateInsuranceProps) {
 						name={insurance.id.toString()}
 						selectedInsurance={props.selectedInsurance}
 						handleChangeInsurance={props.handleChangeInsurance}
+						drawer={props.drawer}
 					/>
 				))
 			) : (

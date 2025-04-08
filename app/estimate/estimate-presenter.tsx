@@ -1,5 +1,7 @@
 'use client'
 
+import EditEstimateDrawer from '@/src/components/pages/estimate/drawer/edit-estimate/edit-estimate-drawer'
+import InsuranceDescriptionDrawer from '@/src/components/pages/estimate/drawer/insurance-description/insurance-description-drawer'
 import EstimateInsurance from '@/src/components/pages/estimate/insurance/estimate-insurance'
 import EstimatePersonal from '@/src/components/pages/estimate/personal/estimate-personal'
 import EstimateSelected from '@/src/components/pages/estimate/selected/estimate-selected'
@@ -18,6 +20,10 @@ export default function EstimatePresenter(props: EstimatePresenterProps) {
 						insurance={props.insurance}
 						selectedInsurance={props.selectedInsurance}
 						handleChangeInsurance={props.handleChangeInsurance}
+						drawer={{
+							editEstimate: props.editEstimateDrawer,
+							insuranceDescription: props.insuranceDescriptionDrawer,
+						}}
 					/>
 				</div>
 				<div className={styles['estimate-section__selected']}>
@@ -28,6 +34,8 @@ export default function EstimatePresenter(props: EstimatePresenterProps) {
 					/>
 				</div>
 			</section>
+			<EditEstimateDrawer {...props.editEstimateDrawer} />
+			<InsuranceDescriptionDrawer {...props.insuranceDescriptionDrawer} />
 		</article>
 	)
 }

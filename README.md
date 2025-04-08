@@ -93,19 +93,24 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 │   └── public 画像ファイル管理
 ├── src
 │   ├── components
-│   │   ├── common - 共通コンポーネント
+│   │   ├── common - 共通コンポーネント, ロジックはcontainerで管理
 │   │   ├── forms - form用コンポーネント
 │   │   ├── features - 機能単位コンポーネント
-│   │   └── pages - ページ固有コンポーネント
+│   │   └── pages - ページ固有コンポーネント, ロジックはcontainerで管理
 │   ├── constants - 変数管理
 │   ├── hooks - カスタムフック管理
+│   │   └── api - api用フック
 │   ├── libs - パッケージ管理
 │   ├── mocks - APIのモックデータ管理
 │   ├── provider
+│   ├── stores - ステート管理
 │   ├── types - 型定義
 │   │   ├── api - APIのレスポンス、リクエスト、クエリなどの型を定義
-│   │   ├── components - コンポーネントのPropsの型を定義
-│   │   └── pages - ページ毎のpropsの型を定義
+│   │   └── components - コンポーネントのPropsの型を定義
+│   │       ├── common - 共通コンポーネント
+│   │       ├── forms - form用コンポーネント
+│   │       ├── features - 機能単位コンポーネント
+│   │       └── pages - ページ毎のpropsの型を定義
 │   └── utils
 ├── style - 共通css,scss
 ├── .env.sample
@@ -120,3 +125,6 @@ https://zenn.dev/buyselltech/articles/9460c75b7cd8d1
 取得したデータなどをpresenterに渡す。<br>
 #### presenter
 データを受け取り、表示する。
+
+### 状態管理
+https://zustand.docs.pmnd.rs/getting-started/introduction
