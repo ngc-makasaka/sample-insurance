@@ -1,7 +1,7 @@
 import BasicCheckbox from '@/src/components/forms/basic-checkbox'
 import { EstimateBlockProps } from '@/src/types/components/pages'
 
-import styles from './index-estimate-parts.module.scss'
+import styles from './IndexEstimateClientParts.module.scss'
 
 const EstimateBox = (props: EstimateBlockProps) => {
 	const checked = props.selectedEstimates.includes(props.value.toString())

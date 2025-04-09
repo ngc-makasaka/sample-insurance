@@ -1,5 +1,5 @@
-import IndexEstimate from '@/src/components/pages/index/estimate/index-estimate'
-import IndexForm from '@/src/components/pages/index/form/index-form'
+import IndexEstimate from '@/src/components/pages/index/client/estimate/IndexEstimateClient'
+import IndexFormClient from '@/src/components/pages/index/client/form/IndexFormClient'
 import { IndexPresenterProps } from '@/src/types/components/pages'
 
 import styles from './index.module.scss'
@@ -11,7 +11,7 @@ export default function IndexPresenter(props: IndexPresenterProps) {
 			<p className={styles.description}>
 				お客さまの生年月日・性別を 入力してください
 			</p>
-			<IndexForm {...props.formState} />
+			<IndexFormClient {...props.formState} />
 			{props.estimate.visible && (
 				<IndexEstimate
 					isLoading={props.estimate.isLoading}

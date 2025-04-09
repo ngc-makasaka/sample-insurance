@@ -4,9 +4,11 @@ import { BasicDatePicker } from '@/src/components/forms/basic-datepicker'
 import { SexRadio } from '@/src/components/forms/sex-radio'
 import { IndexPresenterProps } from '@/src/types/components/pages'
 
-import styles from './index-form.module.scss'
+import styles from './IndexFormClient.module.scss'
 
-export default function IndexForm(props: IndexPresenterProps['formState']) {
+export default function IndexFormClient(
+	props: IndexPresenterProps['formState']
+) {
 	return (
 		<form className={styles.form}>
 			<dl>

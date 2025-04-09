@@ -3,15 +3,15 @@
 import { useRouter } from 'next/navigation'
 import { useMemo, useEffect, useState } from 'react'
 
-import IndexEstimate from '@/src/components/pages/index/estimate/index-estimate'
-import IndexForm from '@/src/components/pages/index/form/index-form'
+import IndexEstimateClient from '@/src/components/pages/index/client/estimate/IndexEstimateClient'
+import IndexForm from '@/src/components/pages/index/client/form/IndexFormClient'
 import { URLS } from '@/src/constants/urls'
 import { useInsuranceList } from '@/src/hooks/api/insurance'
 import { usePersonalStore } from '@/src/stores/personal'
 import { BasicDatePickerProps } from '@/src/types/components/forms/basic-datepicker'
 import { PersonalStoreState } from '@/src/types/stores/personal'
 
-export default function EstimateForm() {
+export default function IndexContentClient() {
 	const { data, isLoading, setQuery } = useInsuranceList()
 	const { form, handleChangeSex, handleChangeBirthday, handleChangeEstimates } =
 		useForm()
@@ -95,7 +95,7 @@ export default function EstimateForm() {
 				handleChangeEstimates={handleChangeEstimates}
 			/>
 			{visible && (
-				<IndexEstimate
+				<IndexEstimateClient
 					isLoading={isLoading}
 					insuranceList={data}
 					handleChangeEstimates={handleChangeEstimates}
