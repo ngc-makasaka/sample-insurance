@@ -1,9 +1,9 @@
 import BasicCheckbox from '@/src/components/forms/basic-checkbox'
-import { EstimateBlockProps } from '@/src/types/components/pages'
+import { EstimateBoxClientProps } from '@/src/types/components/pages'
 
 import styles from './IndexEstimateClientParts.module.scss'
 
-const EstimateBox = (props: EstimateBlockProps) => {
+const EstimateBoxClient = (props: EstimateBoxClientProps) => {
 	const checked = props.selectedEstimates.includes(props.value.toString())
 
 	return (
@@ -28,4 +28,4 @@ const EstimateBox = (props: EstimateBlockProps) => {
 	)
 }
 
-export { EstimateBox }
+export { EstimateBoxClient }

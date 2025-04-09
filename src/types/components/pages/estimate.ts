@@ -8,28 +8,20 @@ import { CommonDrawProps } from '@/src/types/components/common/draw'
 import { BasicCheckboxProps } from '@/src/types/components/forms/basic-checkbox'
 import { PersonalStoreState } from '@/src/types/stores/personal'
 
-export interface EstimatePresenterProps {
-	personal: EstimatePersonalProps
-	insurance?: EstimateInsuranceProps['insurance']
-	selectedInsurance: EstimateInsuranceProps['selectedInsurance']
-	handleChangeInsurance: EstimateInsuranceProps['handleChangeInsurance']
-	editEstimateDrawer: EstimateDrawerProps
-	insuranceDescriptionDrawer: InsuranceDescriptionDrawerProps
-}
-
-export interface EstimatePersonalProps {
+export interface EstimatePersonalClientProps {
 	birthday: PersonalStoreState['birthday']
 	sex: PersonalStoreState['sex']
 }
 
-export interface EstimateInsuranceProps {
+export interface EstimateInsuranceClientProps {
 	insurance?: InsuranceLitsResponse
-	selectedInsurance: EstimateInsuranceUnitProps['selectedInsurance']
-	handleChangeInsurance: EstimateInsuranceUnitProps['handleChangeInsurance']
-	drawer: EstimateInsuranceUnitProps['drawer']
+	selectedInsurance: EstimateInsuranceUnitClientProps['selectedInsurance']
+	handleChangeInsurance: EstimateInsuranceUnitClientProps['handleChangeInsurance']
+	drawer: EstimateInsuranceUnitClientProps['drawer']
 }
 
-export interface EstimateInsuranceUnitProps extends InsuranceResultResponse {
+export interface EstimateInsuranceUnitClientProps
+	extends InsuranceResultResponse {
 	insurance?: InsuranceResultResponse
 	value: BasicCheckboxProps['value']
 	onChange: BasicCheckboxProps['onChange']
@@ -38,27 +30,27 @@ export interface EstimateInsuranceUnitProps extends InsuranceResultResponse {
 	selectedInsurance: string[]
 	handleChangeInsurance: (event: ChangeEvent<HTMLInputElement>) => void
 	drawer: {
-		insuranceDescription: InsuranceDescriptionDrawerProps
-		editEstimate: EstimateDrawerProps
+		insuranceDescription: InsuranceDescriptionDrawerClientProps
+		editEstimate: EstimateDrawerClientProps
 	}
 }
 
-export interface EstimateInsurancePriceProps {
+export interface EstimateInsurancePriceClientProps {
 	price: number
 }
 
-export interface EstimateSelectedProps {
-	selectedInsurance: EstimateInsuranceUnitProps['selectedInsurance']
+export interface EstimateSelectedClientProps {
+	selectedInsurance: EstimateInsuranceUnitClientProps['selectedInsurance']
 	insurance?: InsuranceLitsResponse
 	handleChangeInsurance: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export interface EstimateDrawerProps extends CommonDrawProps {
+export interface EstimateDrawerClientProps extends CommonDrawProps {
 	insurance?: InsuranceResultResponse
 	toggle: (id: string) => void
 }
 
-export interface InsuranceDescriptionDrawerProps extends CommonDrawProps {
+export interface InsuranceDescriptionDrawerClientProps extends CommonDrawProps {
 	insurance?: InsuranceResultResponse
 	toggle: (id: string) => void
 }

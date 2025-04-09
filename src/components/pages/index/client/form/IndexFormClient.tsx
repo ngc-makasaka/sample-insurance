@@ -2,13 +2,11 @@ import dayjs from 'dayjs'
 
 import { BasicDatePicker } from '@/src/components/forms/basic-datepicker'
 import { SexRadio } from '@/src/components/forms/sex-radio'
-import { IndexPresenterProps } from '@/src/types/components/pages'
+import { IndexFormClientProps } from '@/src/types/components/pages'
 
 import styles from './IndexFormClient.module.scss'
 
-export default function IndexFormClient(
-	props: IndexPresenterProps['formState']
-) {
+export default function IndexFormClient(props: IndexFormClientProps) {
 	return (
 		<form className={styles.form}>
 			<dl>

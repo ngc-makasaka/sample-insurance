@@ -1,5 +1,5 @@
-import IndexPage from '@/src/components/pages/index/IndexPage'
+import IndexPageServer from '@/src/components/pages/index/server/IndexPageServer'
 
 export default async function Home() {
-	return <IndexPage />
+	return <IndexPageServer />
 }
