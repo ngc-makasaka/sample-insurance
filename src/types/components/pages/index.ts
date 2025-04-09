@@ -4,22 +4,14 @@ import { BasicDatePickerProps } from '@/src/types/components/forms/basic-datepic
 import { SexRadioProps } from '@/src/types/components/forms/sex-radio'
 import { PersonalStoreState } from '@/src/types/stores/personal'
 
-export interface IndexPresenterProps {
-	formState: {
-		form: PersonalStoreState
-		handleChangeSex: SexRadioProps['onChange']
-		handleChangeBirthday: BasicDatePickerProps['onChange']
-		handleChangeEstimates: BasicCheckboxProps['onChange']
-	}
-	estimate: {
-		visible: boolean
-		isLoading: boolean
-		onStartEstimate: IndexEstimateProps['onStartEstimate']
-		insuranceList?: InsuranceLitsResponse
-	}
+export interface IndexFormClientProps {
+	form: PersonalStoreState
+	handleChangeSex: SexRadioProps['onChange']
+	handleChangeBirthday: BasicDatePickerProps['onChange']
+	handleChangeEstimates: BasicCheckboxProps['onChange']
 }
 
-export interface IndexEstimateProps {
+export interface IndexEstimateClientProps {
 	selectedEstimates: PersonalStoreState['selectedEstimates']
 	handleChangeEstimates: BasicCheckboxProps['onChange']
 	onStartEstimate: () => void
@@ -27,7 +19,7 @@ export interface IndexEstimateProps {
 	isLoading: boolean
 }
 
-export interface EstimateBlockProps {
+export interface EstimateBoxClientProps {
 	title: string
 	subTitle: string
 	description: string
