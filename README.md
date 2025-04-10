@@ -78,53 +78,88 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 .
 ├── .husky - husky設定
 ├── .vscode - vscode設定
-├── app - nextjs ページファイル
+├── app
 │   ├── api - nextjs server api route
-│   ├── samples - サンプルページ ※削除してください
-│   │   ├── page.tsx - ページルートファイル queryなど取得する containerを呼び出す
-│   │   ├── [name]-container.tsx - ロジックを管理するファイル presenterを呼び出す
-│   │   ├── [name]-presenter.tsx - デザインを管理するファイル ロジックはcontainerで管理
-│   │   ├── layout.tsx - ページ個別レイアウト
-│   │   └── [name].module.scss
-│   ├── layout.tsx 全ページ
-│   ├── page.tsx TOPページ
-│   ├── index-container.tsx
-│   ├── index-presenter.tsx
-│   └── public 画像ファイル管理
+│   ├── [path] - ページファイル
+│   ├── layout.tsx 全ページ共通layout
+│   └── page.tsx TOPページ
+├── public - 画像ファイル管理
 ├── src
 │   ├── components
-│   │   ├── common - 共通コンポーネント, ロジックはcontainerで管理
+│   │   ├── common - 共通コンポーネント
 │   │   ├── forms - form用コンポーネント
 │   │   ├── features - 機能単位コンポーネント
-│   │   └── pages - ページ固有コンポーネント, ロジックはcontainerで管理
+│   │   └── pages - ページ固有コンポーネント
+│   │       └── [path] - ページ毎のコンポーネント
+│   │           └── server - サーバー側コンポーネント(rsc)
+│   │           └── client - クライアント側コンポーネント(rcc) rscから呼び出される hookはclientから呼び出す
+│   │               └── [コンポーネント名].tsx
+│   │                   └── parts - コンポーネントの部品　複数ある場合は同一ファイルで管理
 │   ├── constants - 変数管理
 │   ├── hooks - カスタムフック管理
-│   │   └── api - api用フック
+│   │   ├── api - api用フック
+│   │   └── pages
+│   │       └── [path].ts - ページ毎のフック
 │   ├── libs - パッケージ管理
 │   ├── mocks - APIのモックデータ管理
 │   ├── provider
-│   ├── stores - ステート管理
+│   ├── stores - ストア管理
 │   ├── types - 型定義
 │   │   ├── api - APIのレスポンス、リクエスト、クエリなどの型を定義
-│   │   └── components - コンポーネントのPropsの型を定義
-│   │       ├── common - 共通コンポーネント
-│   │       ├── forms - form用コンポーネント
-│   │       ├── features - 機能単位コンポーネント
-│   │       └── pages - ページ毎のpropsの型を定義
-│   └── utils
-├── style - 共通css,scss
+│   │   ├── components - コンポーネントのPropsの型を定義
+│   │   │   ├── common - 共通コンポーネント
+│   │   │   ├── forms - form用コンポーネント
+│   │   │   ├── features - 機能単位コンポーネント
+│   │   │   └── pages - ページ毎のpropsの型を定義
+│   │   ├── hooks - カスタムフックの型を定義
+│   │   │   └── pages - ページ毎のフックの型を定義
+│   │   └── stores - ストアの型を定義
+│   └── utils - 共通関数管理
+│       └── api - api用関数
+├── styles - 共通css,scss
 ├── .env.sample
 └── .nvmrc - nodeバージョン管理
 ````
 
-### container/presenter
-https://zenn.dev/buyselltech/articles/9460c75b7cd8d1
+## 命名規則
 
-#### container
-データ取得やロジック、状態を管理。<br>
-取得したデータなどをpresenterに渡す。<br>
-#### presenter
-データを受け取り、表示する。
+### ディレクトリ名
+- すべて小文字で記述
+- 複数の単語はハイフン（`-`）で区切る
+- 例: `user-profile`, `data-management`
 
-### 状態管理
+### コンポーネントファイル
+- パスカルケース（PascalCase）で記述
+- 役割を明確にする接尾辞を付ける
+  - サーバーコンポーネント: `ComponentNamePageServer.tsx`
+  - クライアントコンポーネント(root）: `ComponentNamePageClient.tsx`
+    - クライアントコンポーネント（unit）: `ComponentNameClient.tsx`
+      - クライアントコンポーネント（parts）: `ComponentNameClientParts.tsx`
+- 例: `UserProfilePageServer.tsx`, `UserProfilePageClient.tsx`, `UserProfileClient.tsx`, `UserProfileClientParts.tsx`
+
+### フックファイル
+- キャメルケース（camelCase）で記述
+- `use`で始める
+- 例: `useUserProfile.ts`, `useDataFetching.ts`
+
+### 型定義ファイル
+- キャメルケース（camelCase）で記述
+- 型の種類を明確にする接尾辞を付ける
+  - インターフェース: `ComponentNameProps.ts`
+  - 型エイリアス: `ComponentNameType.ts`
+- 例: `UserProfileProps.ts`, `UserProfileType.ts`
+
+### ユーティリティファイル
+- キャメルケース（camelCase）で記述
+- 機能を明確にする名前を付ける
+- 例: `formatDate.ts`, `validateEmail.ts`
+
+### スタイルファイル
+- コンポーネント名に合わせてパスカルケース（PascalCase）で記述
+- `.module.scss`または`.module.css`の拡張子を使用
+- 例: `UserProfile.module.scss`
+
+
+
+## 状態管理
 https://zustand.docs.pmnd.rs/getting-started/introduction

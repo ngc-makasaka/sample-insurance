@@ -9,5 +9,6 @@ export const ENDPOINTS = {
 	},
 	insurance: {
 		list: `${_prefix}/insurance`,
+		detail: (id: BaseResponse['id']) => `${_prefix}/insurance/${id}`,
 	},
 }
